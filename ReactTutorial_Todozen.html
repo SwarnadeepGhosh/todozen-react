@@ -102,8 +102,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
           </ul>-->
           <ul>
-          <li><a href="#react-tutorial---todo-app"
-          id="toc-react-tutorial---todo-app">React Tutorial - Todo
+          <li><a href="#react-tutorial---todozen-app"
+          id="toc-react-tutorial---todozen-app">React Tutorial - Todozen
           app</a>
           <ul>
           <li><a href="#introduction"
@@ -120,6 +120,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           id="toc-all-todos--for-loop-in-react">All Todos- For loop in
           React</a></li>
           <li><a href="#footer" id="toc-footer">Footer</a></li>
+          <li><a href="#about-component" id="toc-about-component">About
+          Component</a></li>
           </ul></li>
           <li><a href="#delete-todo" id="toc-delete-todo">Delete
           Todo</a>
@@ -132,12 +134,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           Hook</a></li>
           </ul></li>
           <li><a href="#add-todo" id="toc-add-todo">Add Todo</a></li>
+          <li><a href="#save-todo-in-localstorage"
+          id="toc-save-todo-in-localstorage">Save Todo in
+          LocalStorage</a></li>
+          <li><a href="#react-router" id="toc-react-router">React
+          Router</a></li>
+          <li><a href="#build-for-prod" id="toc-build-for-prod">Build
+          for Prod</a></li>
           </ul></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         
-<h1 id="react-tutorial---todo-app">React Tutorial - Todo app</h1>
+<h1 id="react-tutorial---todozen-app">React Tutorial - Todozen app</h1>
+<p><a href="https://todozen.vercel.app/">Live Link</a></p>
+<h4 id="table-of-contents">Table of contents</h4>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#components">Components</a>
+<ul>
+<li><a href="#header">Header</a></li>
+<li><a href="#react-props-parent-to-child">React Props: parent to
+child</a></li>
+<li><a href="#displaying-one-todo">Displaying One Todo</a></li>
+<li><a href="#all-todos--for-loop-in-react">All Todos- For loop in
+React</a></li>
+<li><a href="#footer">Footer</a></li>
+<li><a href="#about-component">About Component</a></li>
+</ul></li>
+<li><a href="#delete-todo">Delete Todo</a>
+<ul>
+<li><a href="#passing-function-child-to-parent">Passing function: child
+to parent</a></li>
+<li><a href="#deletetodo-using-state-hook">DeleteTodo using State
+Hook</a></li>
+</ul></li>
+<li><a href="#add-todo">Add Todo</a></li>
+<li><a href="#save-todo-in-localstorage">Save Todo in
+LocalStorage</a></li>
+<li><a href="#react-router">React Router</a></li>
+<li><a href="#build-for-prod">Build for Prod</a></li>
+</ul>
 <h2 id="introduction">Introduction</h2>
 <p><strong>Setup</strong></p>
 <ul>
@@ -195,22 +232,23 @@ class="sourceCode html"><code class="sourceCode html"><span id="cb4-1"><a href="
 <ul>
 <li><p>Added other components link in App Component</p>
 <p><strong><em>App.js</em></strong></p>
-<pre class="react"><code>import &#39;./App.css&#39;;
-import { Footer } from &#39;./Components/Footer&#39;;
-import Header from &#39;./Components/Header&#39;;
-import { Todos } from &#39;./Components/Todos&#39;;
-
-function App() {
-  return (
-    &lt;&gt;
-    &lt;Header/&gt;
-    &lt;Todos/&gt;
-    &lt;Footer/&gt;
-    &lt;/&gt;
-  );
-}
-
-export default App;</code></pre></li>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> <span class="st">&#39;./App.css&#39;</span><span class="op">;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { Footer } <span class="im">from</span> <span class="st">&#39;./Components/Footer&#39;</span><span class="op">;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> Header <span class="im">from</span> <span class="st">&#39;./Components/Header&#39;</span><span class="op">;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { Todos } <span class="im">from</span> <span class="st">&#39;./Components/Todos&#39;</span><span class="op">;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">App</span>() {</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;&gt;</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>Header<span class="op">/&gt;</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>Todos<span class="op">/&gt;</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>Footer<span class="op">/&gt;</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;/&gt;</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> App<span class="op">;</span></span></code></pre></div></li>
 <li><p>Added Folder <code>Components</code> and add
 <code>Header.js</code> in it.</p></li>
 <li><p>Created a Function based component using
@@ -231,54 +269,57 @@ class="sourceCode html"><code class="sourceCode html"><span id="cb6-1"><a href="
 <li><p>Rename label <code>for</code> with <code>htmlFor</code></p></li>
 </ol>
 <p><strong><em>Header.js</em></strong></p>
-<pre class="react"><code>import React from &#39;react&#39;
-
-export default function Header(props) {
-  return (
-    &lt;nav className=&quot;navbar navbar-expand-lg navbar-dark bg-dark text-light&quot;&gt;
-      &lt;div className=&quot;container-fluid&quot;&gt;
-        &lt;a className=&quot;navbar-brand&quot; href=&quot;#&quot;&gt;
-            &lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg&quot; alt=&quot;&quot; width=&quot;30&quot; height=&quot;20&quot; className=&quot;d-inline-block align-center&quot;/&gt;
-            {props.title}
-        &lt;/a&gt;
-        &lt;button className=&quot;navbar-toggler&quot; type=&quot;button&quot; data-bs-toggle=&quot;collapse&quot; data-bs-target=&quot;#navbarSupportedContent&quot; aria-controls=&quot;navbarSupportedContent&quot; aria-expanded=&quot;false&quot; aria-label=&quot;Toggle navigation&quot;&gt;
-          &lt;span className=&quot;navbar-toggler-icon&quot;&gt;&lt;/span&gt;
-        &lt;/button&gt;
-        &lt;div className=&quot;collapse navbar-collapse&quot; id=&quot;navbarSupportedContent&quot;&gt;
-          &lt;ul className=&quot;navbar-nav me-auto mb-2 mb-lg-0&quot;&gt;
-            &lt;li className=&quot;nav-item&quot;&gt;
-              &lt;a className=&quot;nav-link active&quot; aria-current=&quot;page&quot; href=&quot;#&quot;&gt;Todos&lt;/a&gt;
-            &lt;/li&gt;
-            &lt;li className=&quot;nav-item&quot;&gt;
-              &lt;a className=&quot;nav-link&quot; href=&quot;#&quot;&gt;About&lt;/a&gt;
-            &lt;/li&gt;
-          &lt;/ul&gt;
-          {props.searchBar? &lt;form className=&quot;d-flex&quot;&gt;
-            &lt;input className=&quot;form-control me-2&quot; type=&quot;search&quot; placeholder=&quot;Search&quot; aria-label=&quot;Search&quot;/&gt;
-            &lt;button className=&quot;btn btn-outline-success&quot; type=&quot;submit&quot;&gt;Search&lt;/button&gt;
-          &lt;/form&gt; : &quot;&quot;}
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/nav&gt;
-  )
-}</code></pre>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> React <span class="im">from</span> <span class="st">&#39;react&#39;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="fu">Header</span>(props) {</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>nav className<span class="op">=</span><span class="st">&quot;navbar navbar-expand-lg navbar-dark bg-dark text-light&quot;</span><span class="op">&gt;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;container-fluid&quot;</span><span class="op">&gt;</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;</span>a className<span class="op">=</span><span class="st">&quot;navbar-brand&quot;</span> href<span class="op">=</span><span class="st">&quot;#&quot;</span><span class="op">&gt;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;</span>img src<span class="op">=</span><span class="st">&quot;https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg&quot;</span> alt<span class="op">=</span><span class="st">&quot;&quot;</span> width<span class="op">=</span><span class="st">&quot;30&quot;</span> height<span class="op">=</span><span class="st">&quot;20&quot;</span> className<span class="op">=</span><span class="st">&quot;d-inline-block align-center&quot;</span><span class="op">/&gt;</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>            {props<span class="op">.</span><span class="at">title</span>}</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;/</span>a<span class="op">&gt;</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;</span>button className<span class="op">=</span><span class="st">&quot;navbar-toggler&quot;</span> type<span class="op">=</span><span class="st">&quot;button&quot;</span> data<span class="op">-</span>bs<span class="op">-</span>toggle<span class="op">=</span><span class="st">&quot;collapse&quot;</span> data<span class="op">-</span>bs<span class="op">-</span>target<span class="op">=</span><span class="st">&quot;#navbarSupportedContent&quot;</span> aria<span class="op">-</span>controls<span class="op">=</span><span class="st">&quot;navbarSupportedContent&quot;</span> aria<span class="op">-</span>expanded<span class="op">=</span><span class="st">&quot;false&quot;</span> aria<span class="op">-</span>label<span class="op">=</span><span class="st">&quot;Toggle navigation&quot;</span><span class="op">&gt;</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>          <span class="op">&lt;</span>span className<span class="op">=</span><span class="st">&quot;navbar-toggler-icon&quot;</span><span class="op">&gt;&lt;/</span>span<span class="op">&gt;</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;/</span>button<span class="op">&gt;</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;collapse navbar-collapse&quot;</span> id<span class="op">=</span><span class="st">&quot;navbarSupportedContent&quot;</span><span class="op">&gt;</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>          <span class="op">&lt;</span>ul className<span class="op">=</span><span class="st">&quot;navbar-nav me-auto mb-2 mb-lg-0&quot;</span><span class="op">&gt;</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;</span>li className<span class="op">=</span><span class="st">&quot;nav-item&quot;</span><span class="op">&gt;</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>              <span class="op">&lt;</span>a className<span class="op">=</span><span class="st">&quot;nav-link active&quot;</span> aria<span class="op">-</span>current<span class="op">=</span><span class="st">&quot;page&quot;</span> href<span class="op">=</span><span class="st">&quot;#&quot;</span><span class="op">&gt;</span>Todos<span class="op">&lt;/</span>a<span class="op">&gt;</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;/</span>li<span class="op">&gt;</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;</span>li className<span class="op">=</span><span class="st">&quot;nav-item&quot;</span><span class="op">&gt;</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>              <span class="op">&lt;</span>a className<span class="op">=</span><span class="st">&quot;nav-link&quot;</span> href<span class="op">=</span><span class="st">&quot;#&quot;</span><span class="op">&gt;</span>About<span class="op">&lt;/</span>a<span class="op">&gt;</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;/</span>li<span class="op">&gt;</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>          <span class="op">&lt;/</span>ul<span class="op">&gt;</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>          {props<span class="op">.</span><span class="at">searchBar</span><span class="op">?</span> <span class="op">&lt;</span>form className<span class="op">=</span><span class="st">&quot;d-flex&quot;</span><span class="op">&gt;</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;</span>input className<span class="op">=</span><span class="st">&quot;form-control me-2&quot;</span> type<span class="op">=</span><span class="st">&quot;search&quot;</span> placeholder<span class="op">=</span><span class="st">&quot;Search&quot;</span> aria<span class="op">-</span>label<span class="op">=</span><span class="st">&quot;Search&quot;</span><span class="op">/&gt;</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;</span>button className<span class="op">=</span><span class="st">&quot;btn btn-outline-success&quot;</span> type<span class="op">=</span><span class="st">&quot;submit&quot;</span><span class="op">&gt;</span>Search<span class="op">&lt;/</span>button<span class="op">&gt;</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>          <span class="op">&lt;/</span>form<span class="op">&gt;</span> <span class="op">:</span> <span class="st">&quot;&quot;</span>}</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;/</span>div<span class="op">&gt;</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;/</span>div<span class="op">&gt;</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;/</span>nav<span class="op">&gt;</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <h3 id="react-props-parent-to-child">React Props: parent to child</h3>
 <p>This is used to send data from Parent to Child component.</p>
 <p>Using String Value <strong>title</strong> and using Boolean value
 <strong>searchBar</strong></p>
 <p><strong><em>App.js</em></strong></p>
-<pre class="react"><code>&lt;Header title=&quot;Todozen by React&quot; searchBar={false}/&gt;</code></pre>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>Header title<span class="op">=</span><span class="st">&quot;Todozen by React&quot;</span> searchBar<span class="op">=</span>{<span class="kw">false</span>}<span class="op">/&gt;</span></span></code></pre></div>
 <p><strong><em>Header.js</em></strong></p>
-<pre class="react"><code>export default function Header(props) {
-    ...
-    // Showing string title, recieved from parent
-    {props.title} // Prints the value from App.js
-    ...
-    // Showing form against boolean value, recieved from parent
-    { props.searchBar? &lt;form className=&quot;d-flex&quot;&gt;
-         &lt;input className=&quot;form-control me-2&quot; type=&quot;search&quot; placeholder=&quot;Search&quot; aria-label=&quot;Search&quot;/&gt;
-         &lt;button className=&quot;btn btn-outline-success&quot; type=&quot;submit&quot;&gt;Search&lt;/button&gt;
-     &lt;/form&gt; : &quot;&quot; }</code></pre>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="fu">Header</span>(props) {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Showing string title, recieved from parent</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    {props<span class="op">.</span><span class="at">title</span>} <span class="co">// Prints the value from App.js</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Showing form against boolean value, recieved from parent</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    { props<span class="op">.</span><span class="at">searchBar</span><span class="op">?</span> <span class="op">&lt;</span>form className<span class="op">=</span><span class="st">&quot;d-flex&quot;</span><span class="op">&gt;</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>         <span class="op">&lt;</span>input className<span class="op">=</span><span class="st">&quot;form-control me-2&quot;</span> type<span class="op">=</span><span class="st">&quot;search&quot;</span> placeholder<span class="op">=</span><span class="st">&quot;Search&quot;</span> aria<span class="op">-</span>label<span class="op">=</span><span class="st">&quot;Search&quot;</span><span class="op">/&gt;</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>         <span class="op">&lt;</span>button className<span class="op">=</span><span class="st">&quot;btn btn-outline-success&quot;</span> type<span class="op">=</span><span class="st">&quot;submit&quot;</span><span class="op">&gt;</span>Search<span class="op">&lt;/</span>button<span class="op">&gt;</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>     <span class="op">&lt;/</span>form<span class="op">&gt;</span> <span class="op">:</span> <span class="st">&quot;&quot;</span> }</span></code></pre></div>
 <p><strong>Snapshot - Designed Header</strong></p>
 <figure>
 <img src="images/todozen-header.png" alt="todozen-header" />
@@ -286,46 +327,49 @@ export default function Header(props) {
 </figure>
 <p><strong>Prop-types and Default Props</strong></p>
 <p><strong><em>Header.js</em></strong></p>
-<pre class="react"><code>import PropTypes from &#39;prop-types&#39;
-...
-// Default value will be provided , if no value proided from parent
-Header.defaultProps = {
-    title : &quot;Your title here&quot;,
-    searchBar : true
-}
-
-// Strict Type checking, this will throw error in console if String not received as title
-Header.propTypes = {
-    title : PropTypes.string,
-    searchBar : PropTypes.bool.isRequired
-}</code></pre>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> PropTypes <span class="im">from</span> <span class="st">&#39;prop-types&#39;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">// Default value will be provided , if no value proided from parent</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>Header<span class="op">.</span><span class="at">defaultProps</span> <span class="op">=</span> {</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">title</span> <span class="op">:</span> <span class="st">&quot;Your title here&quot;</span><span class="op">,</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">searchBar</span> <span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">// Strict Type checking, this will throw error in console if String not received as title</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>Header<span class="op">.</span><span class="at">propTypes</span> <span class="op">=</span> {</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">title</span> <span class="op">:</span> PropTypes<span class="op">.</span><span class="at">string</span><span class="op">,</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">searchBar</span> <span class="op">:</span> PropTypes<span class="op">.</span><span class="at">bool</span><span class="op">.</span><span class="at">isRequired</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <h3 id="displaying-one-todo">Displaying One Todo</h3>
 <p><strong><em>Todos.js</em></strong></p>
-<pre class="react"><code>import React from &#39;react&#39;
-import { Todo } from &#39;./Todo&#39;
-
-export const Todos = (props) =&gt; {
-  return (
-    &lt;div className=&quot;container&quot;&gt;
-        &lt;h2 className=&#39;text-center my-3&#39;&gt;Todo List&lt;/h2&gt;
-        {/* {props.todos[0]} */}
-
-        &lt;Todo todo={props.todos[0]}/&gt;
-    &lt;/div&gt;
-  )
-}</code></pre>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> React <span class="im">from</span> <span class="st">&#39;react&#39;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { Todo } <span class="im">from</span> <span class="st">&#39;./Todo&#39;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="kw">const</span> Todos <span class="op">=</span> (props) <span class="kw">=&gt;</span> {</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;container&quot;</span><span class="op">&gt;</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;</span>h2 className<span class="op">=</span><span class="st">&#39;text-center my-3&#39;</span><span class="op">&gt;</span>Todo List<span class="op">&lt;/</span>h2<span class="op">&gt;</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        {<span class="co">/* {props.todos[0]} */</span>}</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;</span>Todo todo<span class="op">=</span>{props<span class="op">.</span><span class="at">todos</span>[<span class="dv">0</span>]}<span class="op">/&gt;</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;/</span>div<span class="op">&gt;</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p><strong><em>Todo.js</em></strong></p>
-<pre class="react"><code>import React from &#39;react&#39;
-
-export const Todo = ({todo}) =&gt; {
-  return (
-    &lt;div className=&#39;my-3&#39;&gt;
-      &lt;h4&gt;{todo.title}&lt;/h4&gt;
-      &lt;p&gt;{todo.desc}&lt;/p&gt;
-      &lt;button className=&quot;btn btn-danger btn-sm&quot;&gt;Delete&lt;/button&gt;
-    &lt;/div&gt;
-  )
-}</code></pre>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> React <span class="im">from</span> <span class="st">&#39;react&#39;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="kw">const</span> Todo <span class="op">=</span> ({todo}) <span class="kw">=&gt;</span> {</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&#39;my-3&#39;</span><span class="op">&gt;</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;</span>h4<span class="op">&gt;</span>{todo<span class="op">.</span><span class="at">title</span>}<span class="op">&lt;/</span>h4<span class="op">&gt;</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;</span>p<span class="op">&gt;</span>{todo<span class="op">.</span><span class="at">desc</span>}<span class="op">&lt;/</span>p<span class="op">&gt;</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;</span>button className<span class="op">=</span><span class="st">&quot;btn btn-danger btn-sm&quot;</span><span class="op">&gt;</span>Delete<span class="op">&lt;/</span>button<span class="op">&gt;</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;/</span>div<span class="op">&gt;</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p><strong>Snapshot - Displaying One Todo</strong></p>
 <figure>
 <img src="images/todozen-first-todo.png" alt="todozen-first-todo" />
@@ -333,37 +377,39 @@ export const Todo = ({todo}) =&gt; {
 </figure>
 <h3 id="all-todos--for-loop-in-react">All Todos- For loop in React</h3>
 <p><strong><em>Todos.js</em></strong></p>
-<pre class="react"><code>...
-{/* &lt;Todo todo={props.todos[0]}/&gt; */} // This is to display one todo
-
-// For Loop for React
-{props.todos.map((todo) =&gt; {
-    return &lt;Todo todo={todo}/&gt;
-})}</code></pre>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>{<span class="co">/* &lt;Todo todo={props.todos[0]}/&gt; */</span>} <span class="co">// This is to display one todo</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">// For Loop for React</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>{props<span class="op">.</span><span class="at">todos</span><span class="op">.</span><span class="fu">map</span>((todo) <span class="kw">=&gt;</span> {</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">&lt;</span>Todo todo<span class="op">=</span>{todo}<span class="op">/&gt;</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>})}</span></code></pre></div>
 <h3 id="footer">Footer</h3>
 <p><strong><em>Footer.js</em></strong></p>
-<pre class="react"><code>import React from &#39;react&#39;
-
-export const Footer = () =&gt; {
-  // let footerStyle = { position: &quot;absolute&quot;, width: &quot;100%&quot;, bottom: &quot;0&quot; };
-
-  return (
-    // This is to write css within JS
-    // &lt;footer classNameNameName=&#39;footer bg-dark text-light py-2&#39; style={footerStyle}&gt;
-
-    &lt;footer className=&quot;footer text-light&quot;&gt;
-      &lt;div className=&quot;footer-container align-middle text-center vertical-center&quot;&gt;
-        &lt;i&gt;Made with &lt;i className=&quot;fa fa-heart&quot;&gt;&lt;/i&gt; by &lt;a className=&quot;text-light&quot; href=&quot;https://swarnadeep.vercel.app/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;Swarnadeep&lt;/a&gt;&lt;/i&gt;
-
-        &lt;a className=&quot;text-light&quot; href=&quot;https://www.instagram.com/its_swarna_97/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;i className=&quot;fa fa-instagram float-right mx-2 fa-lg social&quot;&gt;&lt;/i&gt;&lt;/a&gt;
-        &lt;a className=&quot;text-light&quot; href=&quot;https://www.facebook.com/swarnadeep.ghosh.10&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;i className=&quot;fa fa-facebook-square float-right mx-2 fa-lg social&quot;&gt;&lt;/i&gt;&lt;/a&gt;
-        &lt;a className=&quot;text-light&quot; href=&quot;https://github.com/SwarnadeepGhosh&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;i className=&quot;fa fa-github-square float-right mx-2 fa-lg social&quot;&gt;&lt;/i&gt;&lt;/a&gt;
-        &lt;a className=&quot;text-light&quot; href=&quot;https://www.linkedin.com/in/swarnadeepghosh/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;i className=&quot;fa fa-linkedin-square float-right mx-2 fa-lg social&quot;&gt;&lt;/i&gt;&lt;/a&gt;
-
-      &lt;/div&gt;
-    &lt;/footer&gt;
-  )
-}</code></pre>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> React <span class="im">from</span> <span class="st">&#39;react&#39;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="kw">const</span> Footer <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">// let footerStyle = { position: &quot;absolute&quot;, width: &quot;100%&quot;, bottom: &quot;0&quot; };</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">// This is to write css within JS</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">// &lt;footer classNameNameName=&#39;footer bg-dark text-light py-2&#39; style={footerStyle}&gt;</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>footer className<span class="op">=</span><span class="st">&quot;footer text-light&quot;</span><span class="op">&gt;</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;footer-container align-middle text-center vertical-center&quot;</span><span class="op">&gt;</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;</span>i<span class="op">&gt;</span>Made <span class="cf">with</span> <span class="op">&lt;</span>i className<span class="op">=</span><span class="st">&quot;fa fa-heart&quot;</span><span class="op">&gt;&lt;/</span>i<span class="op">&gt;</span> by <span class="op">&lt;</span>a className<span class="op">=</span><span class="st">&quot;text-light&quot;</span> href<span class="op">=</span><span class="st">&quot;https://swarnadeep.vercel.app/&quot;</span> target<span class="op">=</span><span class="st">&quot;_blank&quot;</span> rel<span class="op">=</span><span class="st">&quot;noopener noreferrer&quot;</span><span class="op">&gt;</span>Swarnadeep<span class="op">&lt;/</span>a<span class="op">&gt;&lt;/</span>i<span class="op">&gt;</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;</span>a className<span class="op">=</span><span class="st">&quot;text-light&quot;</span> href<span class="op">=</span><span class="st">&quot;https://www.instagram.com/its_swarna_97/&quot;</span> target<span class="op">=</span><span class="st">&quot;_blank&quot;</span> rel<span class="op">=</span><span class="st">&quot;noopener noreferrer&quot;</span><span class="op">&gt;&lt;</span>i className<span class="op">=</span><span class="st">&quot;fa fa-instagram float-right mx-2 fa-lg social&quot;</span><span class="op">&gt;&lt;/</span>i<span class="op">&gt;&lt;/</span>a<span class="op">&gt;</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;</span>a className<span class="op">=</span><span class="st">&quot;text-light&quot;</span> href<span class="op">=</span><span class="st">&quot;https://www.facebook.com/swarnadeep.ghosh.10&quot;</span> target<span class="op">=</span><span class="st">&quot;_blank&quot;</span> rel<span class="op">=</span><span class="st">&quot;noopener noreferrer&quot;</span><span class="op">&gt;&lt;</span>i className<span class="op">=</span><span class="st">&quot;fa fa-facebook-square float-right mx-2 fa-lg social&quot;</span><span class="op">&gt;&lt;/</span>i<span class="op">&gt;&lt;/</span>a<span class="op">&gt;</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;</span>a className<span class="op">=</span><span class="st">&quot;text-light&quot;</span> href<span class="op">=</span><span class="st">&quot;https://github.com/SwarnadeepGhosh&quot;</span> target<span class="op">=</span><span class="st">&quot;_blank&quot;</span> rel<span class="op">=</span><span class="st">&quot;noopener noreferrer&quot;</span><span class="op">&gt;&lt;</span>i className<span class="op">=</span><span class="st">&quot;fa fa-github-square float-right mx-2 fa-lg social&quot;</span><span class="op">&gt;&lt;/</span>i<span class="op">&gt;&lt;/</span>a<span class="op">&gt;</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;</span>a className<span class="op">=</span><span class="st">&quot;text-light&quot;</span> href<span class="op">=</span><span class="st">&quot;https://www.linkedin.com/in/swarnadeepghosh/&quot;</span> target<span class="op">=</span><span class="st">&quot;_blank&quot;</span> rel<span class="op">=</span><span class="st">&quot;noopener noreferrer&quot;</span><span class="op">&gt;&lt;</span>i className<span class="op">=</span><span class="st">&quot;fa fa-linkedin-square float-right mx-2 fa-lg social&quot;</span><span class="op">&gt;&lt;/</span>i<span class="op">&gt;&lt;/</span>a<span class="op">&gt;</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;/</span>div<span class="op">&gt;</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;/</span>footer<span class="op">&gt;</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p><strong><em>App.css</em></strong></p>
 <div class="sourceCode" id="cb15"><pre
 class="sourceCode css"><code class="sourceCode css"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">@import</span> <span class="fu">url(</span><span class="st">&quot;https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css&quot;</span><span class="fu">)</span><span class="op">;</span></span>
@@ -381,30 +427,50 @@ class="sourceCode css"><code class="sourceCode css"><span id="cb15-1"><a href="#
 <span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="fu">.footer-container</span> <span class="fu">.social</span> {</span>
 <span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  <span class="kw">float</span>: <span class="dv">right</span><span class="op">;</span></span>
 <span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<h3 id="about-component">About Component</h3>
+<p><strong><em>About.js</em></strong></p>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> React <span class="im">from</span> <span class="st">&quot;react&quot;</span><span class="op">;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="kw">const</span> About <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;container my-3&quot;</span><span class="op">&gt;</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;</span>h2<span class="op">&gt;</span>This is about component<span class="op">&lt;/</span>h2<span class="op">&gt;</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;</span>i<span class="op">&gt;</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>        Lorem ipsum dolor sit amet consectetur adipisicing elit<span class="op">.</span> <span class="at">Natus</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>        aspernatur ea<span class="op">,</span> odit dignissimos sed numquam error<span class="op">,</span> esse omnis nam quia</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>        aut dolorum eius facilis dolor vitae quibusdam atque dolorem reiciendis<span class="op">!</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;/</span>i<span class="op">&gt;</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;/</span>div<span class="op">&gt;</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div>
 <h2 id="delete-todo">Delete Todo</h2>
 <h3 id="passing-function-child-to-parent">Passing function: child to
 parent</h3>
 <p><strong><em>App.js</em></strong></p>
 <p>Taking todo from Todo Component on deletion and print it into
 console.</p>
-<pre class="react"><code>function App() {
-    ...
-    const onDelete = (todo) =&gt; {
-    console.log(&quot;Deleted Todo : &quot;, todo);
-  }
-  return ( ...
-      &lt;Todos todos={todos} onDelete={onDelete}/&gt;
-    ...</code></pre>
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">App</span>() {</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> onDelete <span class="op">=</span> (todo) <span class="kw">=&gt;</span> {</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;Deleted Todo : &quot;</span><span class="op">,</span> todo)<span class="op">;</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> ( <span class="op">...</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;</span>Todos todos<span class="op">=</span>{todos} onDelete<span class="op">=</span>{onDelete}<span class="op">/&gt;</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span></code></pre></div>
 <p><strong><em>Todos.js</em></strong></p>
-<pre class="react"><code>{props.todos.map((todo) =&gt; {
-    return &lt;Todo todo={todo} key={todo.sno} onDelete={props.onDelete}/&gt;
-})}</code></pre>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>{props<span class="op">.</span><span class="at">todos</span><span class="op">.</span><span class="fu">map</span>((todo) <span class="kw">=&gt;</span> {</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">&lt;</span>Todo todo<span class="op">=</span>{todo} key<span class="op">=</span>{todo<span class="op">.</span><span class="at">sno</span>} onDelete<span class="op">=</span>{props<span class="op">.</span><span class="at">onDelete</span>}<span class="op">/&gt;</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>})}</span></code></pre></div>
 <p><strong><em>Todo.js</em></strong></p>
 <p>Writing arrow function for <code>onDelete()</code> , so that it will
 pass function only, it doesn’t pass the function while calling.</p>
-<pre class="react"><code>export const Todo = ({todo, onDelete}) =&gt; { // Destructuring
-    ...
-    &lt;button className=&quot;btn btn-danger btn-sm&quot; onClick={ ()=&gt; {onDelete(todo)} }&gt;Delete&lt;/button&gt;</code></pre>
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="kw">const</span> Todo <span class="op">=</span> ({todo<span class="op">,</span> onDelete}) <span class="kw">=&gt;</span> { <span class="co">// Destructuring</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>button className<span class="op">=</span><span class="st">&quot;btn btn-danger btn-sm&quot;</span> onClick<span class="op">=</span>{ ()<span class="kw">=&gt;</span> {<span class="fu">onDelete</span>(todo)} }<span class="op">&gt;</span>Delete<span class="op">&lt;/</span>button<span class="op">&gt;</span></span></code></pre></div>
 <h3 id="deletetodo-using-state-hook">DeleteTodo using State Hook</h3>
 <p>Learn State Hook in detail <a
 href="https://reactjs.org/docs/hooks-state.html">here</a></p>
@@ -412,104 +478,190 @@ href="https://reactjs.org/docs/hooks-state.html">here</a></p>
 setTodos function after delete. Imported <code>useState</code> and
 convert <code>let todos</code> into
 <code>const [todos, setTodos] = useState</code></p>
-<pre class="react"><code>import React, { useState } from &quot;react&quot;;
-
-function App() {
-  // let todos = [ ==&gt; Converting this variable into State Hook, so that it can be updated after any Add/Delete operation
-  const [todos, setTodos] = useState([
-    {
-      sno: 1,
-      title: &quot;Go to the market&quot;,
-      desc: &quot;You need to go to market to get the work done&quot;,
-    },
-    ...
-  ]);
-
-  const onDelete = (todo) =&gt; {
-    console.log(&quot;Deleted Todo : &quot;, todo);
-
-    // Deleting this way does not Work
-    // let index = todos.indexOf(todo);
-    // todos.splice(index, 1);
-
-    setTodos(todos.filter((t) =&gt; {
-        return t !== todo;
-    }));
-...</code></pre>
+<div class="sourceCode" id="cb20"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> React<span class="op">,</span> { useState } <span class="im">from</span> <span class="st">&quot;react&quot;</span><span class="op">;</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">App</span>() {</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">// let todos = [ ==&gt; Converting this variable into State Hook, so that it can be updated after any Add/Delete operation</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> [todos<span class="op">,</span> setTodos] <span class="op">=</span> <span class="fu">useState</span>([</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>      <span class="dt">sno</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>      <span class="dt">title</span><span class="op">:</span> <span class="st">&quot;Go to the market&quot;</span><span class="op">,</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>      <span class="dt">desc</span><span class="op">:</span> <span class="st">&quot;You need to go to market to get the work done&quot;</span><span class="op">,</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>  ])<span class="op">;</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> onDelete <span class="op">=</span> (todo) <span class="kw">=&gt;</span> {</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;Deleted Todo : &quot;</span><span class="op">,</span> todo)<span class="op">;</span></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Deleting this way does not Work</span></span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>    <span class="co">// let index = todos.indexOf(todo);</span></span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>    <span class="co">// todos.splice(index, 1);</span></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">setTodos</span>(todos<span class="op">.</span><span class="fu">filter</span>((t) <span class="kw">=&gt;</span> {</span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> t <span class="op">!==</span> todo<span class="op">;</span></span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>    }))<span class="op">;</span></span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span></code></pre></div>
 <p><strong>No Todos to Display Functionality</strong></p>
 <p><strong><em>Todos.js</em></strong></p>
-<pre class="react"><code>export const Todos = (props) =&gt; {
-  return (
-      ...
-        {props.todos.length === 0 ? (
-            &lt;div class=&quot;alert alert-info&quot; role=&quot;alert&quot;&gt;No Todos to Display&lt;/div&gt;
-        ) : (
-            props.todos.map((todo) =&gt; {
-                return &lt;Todo todo={todo} key={todo.sno} onDelete={props.onDelete} /&gt;;
-            })
-        )}</code></pre>
+<div class="sourceCode" id="cb21"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="kw">const</span> Todos <span class="op">=</span> (props) <span class="kw">=&gt;</span> {</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>      <span class="op">...</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>        {props<span class="op">.</span><span class="at">todos</span><span class="op">.</span><span class="at">length</span> <span class="op">===</span> <span class="dv">0</span> <span class="op">?</span> (</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;</span>div <span class="kw">class</span><span class="op">=</span><span class="st">&quot;alert alert-info&quot;</span> role<span class="op">=</span><span class="st">&quot;alert&quot;</span><span class="op">&gt;</span>No Todos to Display<span class="op">&lt;/</span>div<span class="op">&gt;</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>        ) <span class="op">:</span> (</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>            props<span class="op">.</span><span class="at">todos</span><span class="op">.</span><span class="fu">map</span>((todo) <span class="kw">=&gt;</span> {</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> <span class="op">&lt;</span>Todo todo<span class="op">=</span>{todo} key<span class="op">=</span>{todo<span class="op">.</span><span class="at">sno</span>} onDelete<span class="op">=</span>{props<span class="op">.</span><span class="at">onDelete</span>} <span class="op">/&gt;;</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>            })</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>        )}</span></code></pre></div>
 <h2 id="add-todo">Add Todo</h2>
 <p><strong><em>AddTodo.js</em></strong> - using State hook to get the
 values from Form and setting them into variables. Then calling
 <code>addTodo()</code> method.</p>
-<pre class="react"><code>import React, { useState } from &quot;react&quot;;
-export const AddTodo = (props) =&gt; {
-    
-    // Taking value from the Form and setting it to variables
-    const [title, setTitle] = useState(&quot;&quot;);
-    const [desc, setDesc] = useState(&quot;&quot;);
-
-    const submit = (e) =&gt; {
-        e.preventDefault();
-        if(!title || !desc){
-            alert(&quot;Title or Description cannot be blank&quot;)
-        } else {
-            props.addTodo(title, desc);
-        }
-    }
-
-    return (
-        &lt;div className=&quot;container my-2&quot;&gt;
-            &lt;h3 className=&quot;text-center&quot;&gt;Add a Todo&lt;/h3&gt;
-            &lt;form onSubmit={submit}&gt;
-            &lt;div className=&quot;mb-3&quot;&gt;
-                &lt;label htmlFor=&quot;title&quot; className=&quot;form-label&quot;&gt;Todo Title&lt;/label&gt;
-                &lt;input type=&quot;text&quot; value={title} onChange={ (e)=&gt; setTitle(e.target.value)} className=&quot;form-control&quot; id=&quot;title&quot;/&gt;
-            &lt;/div&gt;
-            &lt;div className=&quot;mb-3&quot;&gt;
-                &lt;label htmlFor=&quot;desc&quot; className=&quot;form-label&quot;&gt;Todo Description&lt;/label&gt;
-                &lt;input type=&quot;text&quot; value={desc} onChange={ (e)=&gt; setDesc(e.target.value)} className=&quot;form-control&quot; id=&quot;desc&quot; /&gt;
-            &lt;/div&gt;
-            &lt;button type=&quot;submit&quot;  className=&quot;btn btn-sm btn-success&quot;&gt;Add Todo&lt;/button&gt;
-            &lt;/form&gt;
-        &lt;/div&gt;
-    );
-};</code></pre>
+<div class="sourceCode" id="cb22"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> React<span class="op">,</span> { useState } <span class="im">from</span> <span class="st">&quot;react&quot;</span><span class="op">;</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="kw">const</span> AddTodo <span class="op">=</span> (props) <span class="kw">=&gt;</span> {</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Taking value from the Form and setting it to variables</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> [title<span class="op">,</span> setTitle] <span class="op">=</span> <span class="fu">useState</span>(<span class="st">&quot;&quot;</span>)<span class="op">;</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> [desc<span class="op">,</span> setDesc] <span class="op">=</span> <span class="fu">useState</span>(<span class="st">&quot;&quot;</span>)<span class="op">;</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> submit <span class="op">=</span> (e) <span class="kw">=&gt;</span> {</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>        e<span class="op">.</span><span class="fu">preventDefault</span>()<span class="op">;</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(<span class="op">!</span>title <span class="op">||</span> <span class="op">!</span>desc){</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>            <span class="fu">alert</span>(<span class="st">&quot;Title or Description cannot be blank&quot;</span>)</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>        } <span class="cf">else</span> {</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>            props<span class="op">.</span><span class="fu">addTodo</span>(title<span class="op">,</span> desc)<span class="op">;</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (</span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;container my-2&quot;</span><span class="op">&gt;</span></span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;</span>h3 className<span class="op">=</span><span class="st">&quot;text-center&quot;</span><span class="op">&gt;</span>Add a Todo<span class="op">&lt;/</span>h3<span class="op">&gt;</span></span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;</span>form onSubmit<span class="op">=</span>{submit}<span class="op">&gt;</span></span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;mb-3&quot;</span><span class="op">&gt;</span></span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>                <span class="op">&lt;</span>label htmlFor<span class="op">=</span><span class="st">&quot;title&quot;</span> className<span class="op">=</span><span class="st">&quot;form-label&quot;</span><span class="op">&gt;</span>Todo Title<span class="op">&lt;/</span>label<span class="op">&gt;</span></span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>                <span class="op">&lt;</span>input type<span class="op">=</span><span class="st">&quot;text&quot;</span> value<span class="op">=</span>{title} onChange<span class="op">=</span>{ (e)<span class="kw">=&gt;</span> <span class="fu">setTitle</span>(e<span class="op">.</span><span class="at">target</span><span class="op">.</span><span class="at">value</span>)} className<span class="op">=</span><span class="st">&quot;form-control&quot;</span> id<span class="op">=</span><span class="st">&quot;title&quot;</span><span class="op">/&gt;</span></span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;/</span>div<span class="op">&gt;</span></span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;mb-3&quot;</span><span class="op">&gt;</span></span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>                <span class="op">&lt;</span>label htmlFor<span class="op">=</span><span class="st">&quot;desc&quot;</span> className<span class="op">=</span><span class="st">&quot;form-label&quot;</span><span class="op">&gt;</span>Todo Description<span class="op">&lt;/</span>label<span class="op">&gt;</span></span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>                <span class="op">&lt;</span>input type<span class="op">=</span><span class="st">&quot;text&quot;</span> value<span class="op">=</span>{desc} onChange<span class="op">=</span>{ (e)<span class="kw">=&gt;</span> <span class="fu">setDesc</span>(e<span class="op">.</span><span class="at">target</span><span class="op">.</span><span class="at">value</span>)} className<span class="op">=</span><span class="st">&quot;form-control&quot;</span> id<span class="op">=</span><span class="st">&quot;desc&quot;</span> <span class="op">/&gt;</span></span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;/</span>div<span class="op">&gt;</span></span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;</span>button type<span class="op">=</span><span class="st">&quot;submit&quot;</span>  className<span class="op">=</span><span class="st">&quot;btn btn-sm btn-success&quot;</span><span class="op">&gt;</span>Add Todo<span class="op">&lt;/</span>button<span class="op">&gt;</span></span>
+<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;/</span>form<span class="op">&gt;</span></span>
+<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;/</span>div<span class="op">&gt;</span></span>
+<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a>    )<span class="op">;</span></span>
+<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div>
 <p><strong><em>App.js</em></strong> - Creating todo object and adding it
 into Todo List</p>
-<pre class="react"><code>import { AddTodo } from &quot;./Components/AddTodo&quot;;
-
-  const addTodo = (title,desc) =&gt; {
-    let sno;
-    if(todos.length == 0){
-      sno = 1
-    } else {
-      sno = todos[todos.length - 1].sno + 1;
-    }
-
-    const addedTodo = {
-      sno : sno,
-      title : title,
-      desc : desc
-    }
-    // Adding new todo into todolist and updating the page using useState
-    setTodos([...todos, addedTodo]);
-
-    console.log(&quot;Added Todo : &quot;, addedTodo);
-  };
-...
-      &lt;AddTodo addTodo={addTodo}/&gt;
-...</code></pre>
+<div class="sourceCode" id="cb23"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { AddTodo } <span class="im">from</span> <span class="st">&quot;./Components/AddTodo&quot;</span><span class="op">;</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> addTodo <span class="op">=</span> (title<span class="op">,</span>desc) <span class="kw">=&gt;</span> {</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> sno<span class="op">;</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(todos<span class="op">.</span><span class="at">length</span> <span class="op">==</span> <span class="dv">0</span>){</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>      sno <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>      sno <span class="op">=</span> todos[todos<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span>]<span class="op">.</span><span class="at">sno</span> <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> addedTodo <span class="op">=</span> {</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">sno</span> <span class="op">:</span> sno<span class="op">,</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>      <span class="dt">title</span> <span class="op">:</span> title<span class="op">,</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>      <span class="dt">desc</span> <span class="op">:</span> desc</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Adding new todo into todolist and updating the page using useState</span></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">setTodos</span>([<span class="op">...</span>todos<span class="op">,</span> addedTodo])<span class="op">;</span></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;Added Todo : &quot;</span><span class="op">,</span> addedTodo)<span class="op">;</span></span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;</span>AddTodo addTodo<span class="op">=</span>{addTodo}<span class="op">/&gt;</span></span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span></code></pre></div>
+<p><strong>Clearing the Form values after adding one todo</strong></p>
+<p><strong><em>AddTodo.js</em></strong></p>
+<div class="sourceCode" id="cb24"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> submit <span class="op">=</span> (e) <span class="kw">=&gt;</span> {</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    props<span class="op">.</span><span class="fu">addTodo</span>(title<span class="op">,</span> desc)<span class="op">;</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">setTitle</span>(<span class="st">&quot;&quot;</span>)<span class="op">;</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">setDesc</span>(<span class="st">&quot;&quot;</span>)<span class="op">;</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span></code></pre></div>
+<p>Snapshot after Add Todo and showing TodoList with Footer</p>
+<p><img src="images/todozen-add-todolist.png" alt="todozen-add-todolist" style="zoom: 67%;" /></p>
+<h2 id="save-todo-in-localstorage">Save Todo in LocalStorage</h2>
+<p><strong><em>App.js</em></strong></p>
+<div class="sourceCode" id="cb25"><pre
+class="sourceCode js"><code class="sourceCode javascript"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> React<span class="op">,</span> { useState <span class="op">,</span> useEffect } <span class="im">from</span> <span class="st">&quot;react&quot;</span><span class="op">;</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">App</span>() {</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> initTodo<span class="op">;</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (localStorage<span class="op">.</span><span class="fu">getItem</span>(<span class="st">&quot;todos&quot;</span>) <span class="op">===</span> <span class="kw">null</span>) {</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    initTodo <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span> {</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    initTodo <span class="op">=</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">parse</span>(localStorage<span class="op">.</span><span class="fu">getItem</span>(<span class="st">&quot;todos&quot;</span>))<span class="op">;</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>  <span class="co">// let todos = [ ==&gt; Converting this variable into State Hook, so that it can be updated after any Add/Delete operation</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> [todos<span class="op">,</span> setTodos] <span class="op">=</span> <span class="fu">useState</span>(initTodo)<span class="op">;</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>  <span class="co">// This will tell react to run this function whenever any value changes for todos</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">useEffect</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>    localStorage<span class="op">.</span><span class="fu">setItem</span>(<span class="st">&quot;todos&quot;</span><span class="op">,</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(todos))<span class="op">;</span></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span> [todos])</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span></code></pre></div>
+<h2 id="react-router">React Router</h2>
+<p>Installation</p>
+<div class="sourceCode" id="cb26"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> npm i react-router-dom@5.3.3</span></code></pre></div>
+<p><a
+href="https://v5.reactrouter.com/web/guides/quick-start">Documentation</a></p>
+<p><strong><em>App.js</em></strong></p>
+<div class="sourceCode" id="cb27"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { BrowserRouter <span class="im">as</span> Router<span class="op">,</span> Switch<span class="op">,</span> Route } <span class="im">from</span> <span class="st">&quot;react-router-dom&quot;</span><span class="op">;</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { About } <span class="im">from</span> <span class="st">&quot;./Components/About&quot;</span><span class="op">;</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;&gt;</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;</span>Router<span class="op">&gt;</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;</span>Header title<span class="op">=</span><span class="st">&quot;Todozen by React&quot;</span> searchBar<span class="op">=</span>{<span class="kw">false</span>} <span class="op">/&gt;</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>        {<span class="co">/* A &lt;Switch&gt; looks through its children &lt;Route&gt;s and</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="co">            renders the first one that matches the current URL. */</span>}</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;</span>Switch<span class="op">&gt;</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>          <span class="op">&lt;</span>Route exact path<span class="op">=</span><span class="st">&quot;/&quot;</span>  render<span class="op">=</span>{() <span class="kw">=&gt;</span> {</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>              <span class="cf">return</span> (</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>                <span class="op">&lt;&gt;</span></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>                  <span class="op">&lt;</span>AddTodo addTodo<span class="op">=</span>{addTodo} <span class="op">/&gt;</span></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>                  <span class="op">&lt;</span>Todos todos<span class="op">=</span>{todos} onDelete<span class="op">=</span>{onDelete} <span class="op">/&gt;</span></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>                <span class="op">&lt;/&gt;</span></span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>              )<span class="op">;</span></span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>            }}</span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>          <span class="op">&gt;&lt;/</span>Route<span class="op">&gt;</span></span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>          <span class="op">&lt;</span>Route exact path<span class="op">=</span><span class="st">&quot;/about&quot;</span><span class="op">&gt;&lt;</span>About <span class="op">/&gt;&lt;/</span>Route<span class="op">&gt;</span></span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;/</span>Switch<span class="op">&gt;</span></span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;</span>Footer <span class="op">/&gt;</span></span>
+<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;/</span>Router<span class="op">&gt;</span></span>
+<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;/&gt;</span></span>
+<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> App<span class="op">;</span></span></code></pre></div>
+<p><strong><em>Header.js</em></strong></p>
+<div class="sourceCode" id="cb28"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { Link } <span class="im">from</span> <span class="st">&quot;react-router-dom&quot;</span><span class="op">;</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>a<span class="op">&gt;</span> will be replaced by <span class="op">&lt;</span>Link<span class="op">&gt;</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>href<span class="op">=</span><span class="st">&quot;#&quot;</span><span class="op">&gt;</span> will be replaced by to<span class="op">=</span><span class="st">&quot;/&quot;</span><span class="op">&gt;</span> </span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>Example <span class="op">:</span> </span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>Link className<span class="op">=</span><span class="st">&quot;nav-link active&quot;</span> aria<span class="op">-</span>current<span class="op">=</span><span class="st">&quot;page&quot;</span> to<span class="op">=</span><span class="st">&quot;/&quot;</span><span class="op">&gt;</span>Todos<span class="op">&lt;/</span>Link<span class="op">&gt;</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>Link className<span class="op">=</span><span class="st">&quot;nav-link&quot;</span> to<span class="op">=</span><span class="st">&quot;/about&quot;</span><span class="op">&gt;</span>About<span class="op">&lt;/</span>Link<span class="op">&gt;</span></span></code></pre></div>
+<h2 id="build-for-prod">Build for Prod</h2>
+<div class="sourceCode" id="cb29"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> npm run build</span></code></pre></div>
         </div>
       </div>
     </div>

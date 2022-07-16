@@ -2,15 +2,16 @@ import "./App.css";
 import { Footer } from "./Components/Footer";
 import Header from "./Components/Header";
 import { Todos } from "./Components/Todos";
-import React, { useState , useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { AddTodo } from "./Components/AddTodo";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { About } from "./Components/About";
 
 function App() {
   let initTodo;
   if (localStorage.getItem("todos") === null) {
     initTodo = [];
-  }
-  else {
+  } else {
     initTodo = JSON.parse(localStorage.getItem("todos"));
   }
 
@@ -19,8 +20,7 @@ function App() {
   // This will tell react to run this function whenever any value changes for todos
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos])
-  
+  }, [todos]);
 
   const onDelete = (todo) => {
     console.log("Deleted Todo : ", todo);
@@ -29,9 +29,11 @@ function App() {
     // todos.splice(index, 1);
 
     // Setting all other todo into todos, which not matching Deleted Todo
-    setTodos(todos.filter((e) => {
-      return e !== todo;
-    }));
+    setTodos(
+      todos.filter((e) => {
+        return e !== todo;
+      })
+    );
     // localStorage.setItem("todos", JSON.stringify(todos));
   };
 
@@ -56,10 +58,25 @@ function App() {
 
   return (
     <>
-      <Header title="Todozen by React" searchBar={false} />
-      <AddTodo addTodo={addTodo} />
-      <Todos todos={todos} onDelete={onDelete} />
-      <Footer />
+      <Router>
+        <Header title="Todozen by React" searchBar={false} />
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        <Switch>
+          <Route exact path="/"  render={() => {
+              return (
+                <>
+                  <AddTodo addTodo={addTodo} />
+                  <Todos todos={todos} onDelete={onDelete} />
+                </>
+              );
+            }}
+          ></Route>
+          <Route exact path="/about"><About /></Route>
+        </Switch>
+
+        <Footer />
+      </Router>
     </>
   );
 }

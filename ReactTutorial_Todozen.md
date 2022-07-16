@@ -1,6 +1,24 @@
-# React Tutorial - Todo app
+# React Tutorial - Todozen app
 
+[Live Link](https://todozen.vercel.app/)
 
+#### Table of contents
+
+- [Introduction](#introduction)
+- [Components](#components)
+  - [Header](#header)
+  - [React Props: parent to child](#react-props-parent-to-child)
+  - [Displaying One Todo](#displaying-one-todo)
+  - [All Todos- For loop in React](#all-todos--for-loop-in-react)
+  - [Footer](#footer)
+  - [About Component](#about-component)
+- [Delete Todo](#delete-todo)
+  - [Passing function: child to parent](#passing-function-child-to-parent)
+  - [DeleteTodo using State Hook](#deletetodo-using-state-hook)
+- [Add Todo](#add-todo)
+- [Save Todo in LocalStorage](#save-todo-in-localstorage)
+- [React Router](#react-router)
+- [Build for Prod](#build-for-prod)
 
 
 
@@ -73,7 +91,7 @@ JS
 
   ***App.js***
 
-  ```react
+  ```javascript
   import './App.css';
   import { Footer } from './Components/Footer';
   import Header from './Components/Header';
@@ -116,7 +134,7 @@ Steps :
 
 ***Header.js***
 
-```react
+```javascript
 import React from 'react'
 
 export default function Header(props) {
@@ -160,13 +178,13 @@ Using String Value **title** and using Boolean value **searchBar**
 
 ***App.js***
 
-```react
+```javascript
 <Header title="Todozen by React" searchBar={false}/>
 ```
 
 ***Header.js***
 
-```react
+```javascript
 export default function Header(props) {
 	...
     // Showing string title, recieved from parent
@@ -189,7 +207,7 @@ export default function Header(props) {
 
 ***Header.js***
 
-```react
+```javascript
 import PropTypes from 'prop-types'
 ...
 // Default value will be provided , if no value proided from parent
@@ -211,7 +229,7 @@ Header.propTypes = {
 
 ***Todos.js***
 
-```react
+```javascript
 import React from 'react'
 import { Todo } from './Todo'
 
@@ -229,7 +247,7 @@ export const Todos = (props) => {
 
 ***Todo.js***
 
-```react
+```javascript
 import React from 'react'
 
 export const Todo = ({todo}) => {
@@ -251,7 +269,7 @@ export const Todo = ({todo}) => {
 
 ***Todos.js***
 
-```react
+```javascript
 ...
 {/* <Todo todo={props.todos[0]}/> */} // This is to display one todo
 
@@ -269,7 +287,7 @@ export const Todo = ({todo}) => {
 
 ***Footer.js***
 
-```react
+```javascript
 import React from 'react'
 
 export const Footer = () => {
@@ -316,6 +334,29 @@ export const Footer = () => {
 
 
 
+### About Component
+
+***About.js***
+
+```javascript
+import React from "react";
+
+export const About = () => {
+  return (
+    <div className="container my-3">
+      <h2>This is about component</h2>
+      <i>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
+        aspernatur ea, odit dignissimos sed numquam error, esse omnis nam quia
+        aut dolorum eius facilis dolor vitae quibusdam atque dolorem reiciendis!
+      </i>
+    </div>
+  );
+};
+```
+
+
+
 
 
 ## Delete Todo
@@ -326,7 +367,7 @@ export const Footer = () => {
 
 Taking todo from Todo Component on deletion and print it into console.
 
-```react
+```javascript
 function App() {
 	...
     const onDelete = (todo) => {
@@ -339,7 +380,7 @@ function App() {
 
 ***Todos.js***
 
-```react
+```javascript
 {props.todos.map((todo) => {
     return <Todo todo={todo} key={todo.sno} onDelete={props.onDelete}/>
 })}
@@ -349,7 +390,7 @@ function App() {
 
 Writing arrow function for `onDelete()` , so that it will pass function only, it doesn't pass the function while calling.
 
-```react
+```javascript
 export const Todo = ({todo, onDelete}) => { // Destructuring
 	...
     <button className="btn btn-danger btn-sm" onClick={ ()=> {onDelete(todo)} }>Delete</button>
@@ -363,7 +404,7 @@ Learn State Hook in detail [here](https://reactjs.org/docs/hooks-state.html)
 
 ***App.js*** - used State hook of react to run setTodos function after delete. Imported `useState` and convert `let todos` into `const [todos, setTodos] = useState`
 
-```react
+```javascript
 import React, { useState } from "react";
 
 function App() {
@@ -396,7 +437,7 @@ function App() {
 
 ***Todos.js***
 
-```react
+```javascript
 export const Todos = (props) => {
   return (
       ...
@@ -417,7 +458,7 @@ export const Todos = (props) => {
 
 ***AddTodo.js*** - using State hook to get the values from Form and setting them into variables. Then calling  `addTodo()` method.
 
-```react
+```javascript
 import React, { useState } from "react";
 export const AddTodo = (props) => {
     
@@ -457,7 +498,7 @@ export const AddTodo = (props) => {
 
 ***App.js*** - Creating todo object and adding it into Todo List
 
-```react
+```javascript
 import { AddTodo } from "./Components/AddTodo";
 
   const addTodo = (title,desc) => {
@@ -489,7 +530,7 @@ import { AddTodo } from "./Components/AddTodo";
 
 ***AddTodo.js*** 
 
-```react
+```javascript
 const submit = (e) => {
     ...
 } else {
@@ -503,7 +544,7 @@ const submit = (e) => {
 
 Snapshot after Add Todo and showing TodoList with Footer
 
-![todozen-add-todolist](images/todozen-add-todolist.png)
+<img src="images/todozen-add-todolist.png" alt="todozen-add-todolist" style="zoom: 67%;" />
 
 
 
@@ -511,7 +552,7 @@ Snapshot after Add Todo and showing TodoList with Footer
 
 ***App.js***
 
-```react
+```js
 import React, { useState , useEffect } from "react";
 
 function App() {
@@ -530,5 +571,73 @@ function App() {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos])
 ...
+```
+
+
+
+## React Router
+
+Installation 
+
+```sh
+$ npm i react-router-dom@5.3.3
+```
+
+[Documentation](https://v5.reactrouter.com/web/guides/quick-start)
+
+***App.js***
+
+```javascript
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { About } from "./Components/About";
+
+  return (
+    <>
+      <Router>
+        <Header title="Todozen by React" searchBar={false} />
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        <Switch>
+          <Route exact path="/"  render={() => {
+              return (
+                <>
+                  <AddTodo addTodo={addTodo} />
+                  <Todos todos={todos} onDelete={onDelete} />
+                </>
+              );
+            }}
+          ></Route>
+          <Route exact path="/about"><About /></Route>
+        </Switch>
+
+        <Footer />
+      </Router>
+    </>
+  );
+}
+export default App;
+```
+
+
+
+***Header.js***
+
+```javascript
+import { Link } from "react-router-dom";
+
+<a> will be replaced by <Link>
+href="#"> will be replaced by to="/"> 
+    
+Example : 
+<Link className="nav-link active" aria-current="page" to="/">Todos</Link>
+<Link className="nav-link" to="/about">About</Link>
+```
+
+
+
+## Build for Prod
+
+```sh
+$ npm run build
 ```
 
