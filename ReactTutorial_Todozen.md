@@ -485,6 +485,22 @@ import { AddTodo } from "./Components/AddTodo";
 
 
 
+**Clearing the Form values after adding one todo**
+
+***AddTodo.js*** 
+
+```react
+const submit = (e) => {
+    ...
+} else {
+    props.addTodo(title, desc);
+    setTitle("");
+    setDesc("");
+    ...
+```
+
+
+
 Snapshot after Add Todo and showing TodoList with Footer
 
 ![todozen-add-todolist](images/todozen-add-todolist.png)
@@ -492,4 +508,27 @@ Snapshot after Add Todo and showing TodoList with Footer
 
 
 ## Save Todo in LocalStorage
+
+***App.js***
+
+```react
+import React, { useState , useEffect } from "react";
+
+function App() {
+  let initTodo;
+  if (localStorage.getItem("todos") === null) {
+    initTodo = [];
+  }
+  else {
+    initTodo = JSON.parse(localStorage.getItem("todos"));
+  }
+
+  // let todos = [ ==> Converting this variable into State Hook, so that it can be updated after any Add/Delete operation
+  const [todos, setTodos] = useState(initTodo);
+  // This will tell react to run this function whenever any value changes for todos
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos])
+...
+```
 
