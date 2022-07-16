@@ -112,7 +112,7 @@ Steps :
 
 3. Rename `class` with `className`
 
-4. Rename `for` with `htmlFor`
+4. Rename label `for` with `htmlFor`
 
 ***Header.js***
 
@@ -263,6 +263,61 @@ export const Todo = ({todo}) => {
 
 
 
+
+
+### Footer 
+
+***Footer.js***
+
+```react
+import React from 'react'
+
+export const Footer = () => {
+  // let footerStyle = { position: "absolute", width: "100%", bottom: "0" };
+
+  return (
+    // This is to write css within JS
+    // <footer classNameNameName='footer bg-dark text-light py-2' style={footerStyle}>
+
+    <footer className="footer text-light">
+      <div className="footer-container align-middle text-center vertical-center">
+        <i>Made with <i className="fa fa-heart"></i> by <a className="text-light" href="https://swarnadeep.vercel.app/" target="_blank" rel="noopener noreferrer">Swarnadeep</a></i>
+
+        <a className="text-light" href="https://www.instagram.com/its_swarna_97/" target="_blank" rel="noopener noreferrer"><i className="fa fa-instagram float-right mx-2 fa-lg social"></i></a>
+        <a className="text-light" href="https://www.facebook.com/swarnadeep.ghosh.10" target="_blank" rel="noopener noreferrer"><i className="fa fa-facebook-square float-right mx-2 fa-lg social"></i></a>
+        <a className="text-light" href="https://github.com/SwarnadeepGhosh" target="_blank" rel="noopener noreferrer"><i className="fa fa-github-square float-right mx-2 fa-lg social"></i></a>
+        <a className="text-light" href="https://www.linkedin.com/in/swarnadeepghosh/" target="_blank" rel="noopener noreferrer"><i className="fa fa-linkedin-square float-right mx-2 fa-lg social"></i></a>
+
+      </div>
+    </footer>
+  )
+}
+```
+
+***App.css***
+
+```css
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css");
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  background-color: #000000;
+}
+.footer-container {
+  padding: 8px;
+}
+.footer-container .social {
+  float: right;
+}
+```
+
+
+
+
+
 ## Delete Todo
 
 ### Passing function: child to parent
@@ -304,6 +359,8 @@ export const Todo = ({todo, onDelete}) => { // Destructuring
 
 ### DeleteTodo using State Hook
 
+Learn State Hook in detail [here](https://reactjs.org/docs/hooks-state.html)
+
 ***App.js*** - used State hook of react to run setTodos function after delete. Imported `useState` and convert `let todos` into `const [todos, setTodos] = useState`
 
 ```react
@@ -336,3 +393,103 @@ function App() {
 
 
 **No Todos to Display Functionality**
+
+***Todos.js***
+
+```react
+export const Todos = (props) => {
+  return (
+      ...
+        {props.todos.length === 0 ? (
+            <div class="alert alert-info" role="alert">No Todos to Display</div>
+        ) : (
+            props.todos.map((todo) => {
+                return <Todo todo={todo} key={todo.sno} onDelete={props.onDelete} />;
+            })
+        )}
+```
+
+
+
+
+
+## Add Todo
+
+***AddTodo.js*** - using State hook to get the values from Form and setting them into variables. Then calling  `addTodo()` method.
+
+```react
+import React, { useState } from "react";
+export const AddTodo = (props) => {
+    
+    // Taking value from the Form and setting it to variables
+    const [title, setTitle] = useState("");
+    const [desc, setDesc] = useState("");
+
+    const submit = (e) => {
+        e.preventDefault();
+        if(!title || !desc){
+            alert("Title or Description cannot be blank")
+        } else {
+            props.addTodo(title, desc);
+        }
+    }
+
+    return (
+        <div className="container my-2">
+            <h3 className="text-center">Add a Todo</h3>
+            <form onSubmit={submit}>
+            <div className="mb-3">
+                <label htmlFor="title" className="form-label">Todo Title</label>
+                <input type="text" value={title} onChange={ (e)=> setTitle(e.target.value)} className="form-control" id="title"/>
+            </div>
+            <div className="mb-3">
+                <label htmlFor="desc" className="form-label">Todo Description</label>
+                <input type="text" value={desc} onChange={ (e)=> setDesc(e.target.value)} className="form-control" id="desc" />
+            </div>
+            <button type="submit"  className="btn btn-sm btn-success">Add Todo</button>
+            </form>
+        </div>
+    );
+};
+```
+
+
+
+***App.js*** - Creating todo object and adding it into Todo List
+
+```react
+import { AddTodo } from "./Components/AddTodo";
+
+  const addTodo = (title,desc) => {
+    let sno;
+    if(todos.length == 0){
+      sno = 1
+    } else {
+      sno = todos[todos.length - 1].sno + 1;
+    }
+
+    const addedTodo = {
+      sno : sno,
+      title : title,
+      desc : desc
+    }
+    // Adding new todo into todolist and updating the page using useState
+    setTodos([...todos, addedTodo]);
+
+    console.log("Added Todo : ", addedTodo);
+  };
+...
+      <AddTodo addTodo={addTodo}/>
+...
+```
+
+
+
+Snapshot after Add Todo and showing TodoList with Footer
+
+![todozen-add-todolist](images/todozen-add-todolist.png)
+
+
+
+## Save Todo in LocalStorage
+
